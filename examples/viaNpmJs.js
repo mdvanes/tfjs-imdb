@@ -1,6 +1,6 @@
 // import * as tf from '@tensorflow/tfjs';
 
-// TODO https://medium.com/tensorflow/a-gentle-introduction-to-tensorflow-js-dba2e5257702
+// TODO "https://medium.com/tensorflow/a-gentle-introduction-to-tensorflow-js-dba2e5257702"
 // TODO also see jsfiddle
 
 function log(...keys) {

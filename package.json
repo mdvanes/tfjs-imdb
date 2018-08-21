@@ -9,6 +9,8 @@
   "author": "M.D. van Es",
   "license": "MIT",
   "dependencies": {
-    "@tensorflow/tfjs": "^0.12.4"
+    "@tensorflow/tfjs": "^0.12.4",
+    "@tensorflow/tfjs-core": "^0.12.12",
+    "@tensorflow/tfjs-node": "^0.1.13"
   }
 }
