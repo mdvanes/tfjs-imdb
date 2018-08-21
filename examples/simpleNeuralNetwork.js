@@ -1,4 +1,8 @@
 const tf = require('@tensorflow/tfjs');
+const {
+    performance,
+    PerformanceObserver
+} = require('perf_hooks');
 
 // Load the binding:
 require('@tensorflow/tfjs-node');  // Use '@tensorflow/tfjs-node-gpu' if running with GPU.
@@ -21,6 +25,8 @@ require('@tensorflow/tfjs-node');  // Use '@tensorflow/tfjs-node-gpu' if running
 //     }
 // });
 
+// Neural network for XOR (https://medium.com/tensorflow/a-gentle-introduction-to-tensorflow-js-dba2e5257702)
+
 // Define the training set
 const xs = tf.tensor2d([[0,0],[0,1],[1,0],[1,1]]);
 const ys = tf.tensor2d([[0],[1],[1],[0]]);
@@ -35,15 +41,67 @@ function createModel()
     return model;
 }
 
-async function run(model) {
+// performance.clearMarks should clear all the marks, but it doesn't work. As a workaround, unique mark names are created
+// async function run(model, epochs) {
+//     performance.mark('fitting1' + epochs);
+//     // Fit the model
+//     await model.fit(xs, ys, {
+//         batchSize: 1,
+//         epochs //5000
+//     });
+//     performance.mark('fitting2' + epochs);
+//
+//     // Predict the training set
+//     model.predict(xs).print();
+//     performance.measure('fitting' + epochs, 'fitting1' + epochs, 'fitting2' + epochs);
+//     console.log(performance.getEntries()); // TODO should be the same, because of clearMarks()
+//     const measure = performance.getEntriesByName('fitting' + epochs)[0];
+//     console.log(`Duration of ${measure.name} for ${epochs} epochs: ${Math.round(measure.duration)}ms`);
+//     performance.clearMarks();
+// }
+
+async function run(model, epochs) {
+    performance.mark('fitting1');
     // Fit the model
     await model.fit(xs, ys, {
         batchSize: 1,
-        epochs: 20 //5000
+        epochs //5000
     });
+    performance.mark('fitting2');
 
     // Predict the training set
     model.predict(xs).print();
+    performance.measure('fitting' + epochs, 'fitting1', 'fitting2');
+    //console.log(performance.getEntries()); // TODO should be the same, because of clearMarks()
+    const measure = performance.getEntriesByName('fitting' + epochs)[0];
+    console.log(`Duration of ${measure.name} for ${epochs} epochs: ${Math.round(measure.duration)}ms`);
+    performance.clearMarks();
 }
 
-run(createModel());
+// async function run(model, epochs) {
+//     // Fit the model
+//     await model.fit(xs, ys, {
+//         batchSize: 1,
+//         epochs //5000
+//     });
+//
+//     // Predict the training set
+//     model.predict(xs).print();
+// }
+//
+// const timedRun = performance.timerify(run);
+//
+// const obs = new PerformanceObserver((list) => {
+//     const measure = list.getEntries()[0];
+//     // console.log(measure.duration);
+//     console.log(`Duration of ${measure.name}: ${Math.round(measure.duration)}ms`);
+//     obs.disconnect();
+//     performance.clearFunctions();
+// });
+// obs.observe({ entryTypes: ['function'] });
+
+run(createModel(), 2);
+run(createModel(), 20);
+run(createModel(), 50);
+run(createModel(), 200);
+run(createModel(), 2000);
