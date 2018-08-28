@@ -11,7 +11,7 @@ To run the first tutorials from "https://medium.com/tensorflow/a-gentle-introduc
 To run the tutorial "simple neural network" for XOR from "https://medium.com/tensorflow/a-gentle-introduction-to-tensorflow-js-dba2e5257702":
 
 * nvm use
-* node experimental/simpleNeuralNetwork.js
+* node examples/simpleNeuralNetwork.js
 
 ## Results for XOR
 
@@ -52,3 +52,4 @@ Tensor
      [0.0176631]]
 Duration of fitting5000 for 5000 epochs: 1696989ms
 
+# CNN
