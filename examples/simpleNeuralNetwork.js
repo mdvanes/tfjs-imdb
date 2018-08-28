@@ -7,7 +7,7 @@ const {
 // Load the binding:
 require('@tensorflow/tfjs-node');  // Use '@tensorflow/tfjs-node-gpu' if running with GPU.
 
-// Train a simple model (example from https://js.tensorflow.org/)
+// Train a simple model for XOR (example from https://js.tensorflow.org/)
 // const model = tf.sequential();
 // model.add(tf.layers.dense({units: 100, activation: 'relu', inputShape: [10]}));
 // model.add(tf.layers.dense({units: 1, activation: 'linear'}));
@@ -72,7 +72,7 @@ async function run(model, epochs) {
     // Predict the training set
     model.predict(xs).print();
     performance.measure('fitting' + epochs, 'fitting1', 'fitting2');
-    //console.log(performance.getEntries()); // TODO should be the same, because of clearMarks()
+    //console.log(performance.getEntries()); // TODO should also clear "measure" and not only "mark". Or sort descending by "duration"
     const measure = performance.getEntriesByName('fitting' + epochs)[0];
     console.log(`Duration of ${measure.name} for ${epochs} epochs: ${Math.round(measure.duration)}ms`);
     performance.clearMarks();
@@ -105,3 +105,4 @@ run(createModel(), 20);
 run(createModel(), 50);
 run(createModel(), 200);
 run(createModel(), 2000);
+run(createModel(), 5000);
