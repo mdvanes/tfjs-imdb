@@ -70,17 +70,11 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
         hello = tf.constant('Hello, TensorFlow!')
         sess = tf.Session()
         print(sess.run(hello))
-    * run (in the same shell) a test for Keras/NumPy:
-        import tensorflow as tf
-        from tensorflow import keras
-        
-        import numpy as np
-        
-        print(tf.__version__)
-    * verify:
-        print("Training entries: {}, labels: {}".format(len(train_data), len(train_labels)))
-    * it should return 
-        Training entries: 25000, labels: 25000
+    * run (in the same shell) the saved script:
+        * cd basic-text-classification
+        * source ./bin/activate
+        * python run.py
+    * TODO run a test against the trained model as a final step in the Python script
 
 
 * Try to run this (Python): Adversarial Text Classification  https://github.com/tensorflow/models/tree/master/research/adversarial_text
