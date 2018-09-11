@@ -53,3 +53,52 @@ Tensor
 Duration of fitting5000 for 5000 epochs: 1696989ms
 
 # CNN
+
+
+# Text classification
+
+* Try to run this (Python): https://www.tensorflow.org/tutorials/keras/basic_text_classification
+    * https://www.tensorflow.org/install/install_mac
+    * virtualenv --system-site-packages basic-text-classification
+    * cd basic-text-classification
+    * source ./bin/activate
+    * pip install --upgrade tensorflow
+    * https://www.tensorflow.org/install/install_mac#run_a_short_tensorflow_program
+    * run a small program: `python`
+        # Python
+        import tensorflow as tf
+        hello = tf.constant('Hello, TensorFlow!')
+        sess = tf.Session()
+        print(sess.run(hello))
+    * run (in the same shell) a test for Keras/NumPy:
+        import tensorflow as tf
+        from tensorflow import keras
+        
+        import numpy as np
+        
+        print(tf.__version__)
+    * verify:
+        print("Training entries: {}, labels: {}".format(len(train_data), len(train_labels)))
+    * it should return 
+        Training entries: 25000, labels: 25000
+
+
+* Try to run this (Python): Adversarial Text Classification  https://github.com/tensorflow/models/tree/master/research/adversarial_text
+    * cd ~/Document/Projects/ING/models/research/adversarial_text
+    * follow readme
+    * wget http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz \
+          -O /tmp/imdb.tar.gz
+    * tar -xf /tmp/imdb.tar.gz -C /tmp
+* Try to export the model
+* Try to import the model in TensorflowJS
+
+* Tensorflow pretrained models https://github.com/tensorflow/tfjs-models/tree/master/object-detection
+* https://www.tensorflow.org/guide/premade_estimators
+* https://www.tensorflow.org/hub/tutorials/text_classification_with_tf_hub
+* Text Classification with Sentence Level Convolutional Neural Networks https://github.com/dust0x/glove-text-cnn
+* Library for efficient text classification and representation learning https://fasttext.cc/
+* using pretrained Keras models in tensorflowjs (other than the image recognition example) https://js.tensorflow.org/tutorials/import-keras.html
+* Use parcel for module bundling
+* Research running part of the network in a web worker
+
+
