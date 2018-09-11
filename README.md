@@ -73,8 +73,12 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
     * run (in the same shell) the saved script:
         * cd basic-text-classification
         * source ./bin/activate
+        * (for ubuntu also possible sudo apt install libhdf5)
+        * pip install h5py
         * python run.py
-    * TODO run a test against the trained model as a final step in the Python script
+    * run a test against the trained model as a final step in the Python script
+* Try to export the model
+* Try to import the model in TensorflowJS    
 
 
 * Try to run this (Python): Adversarial Text Classification  https://github.com/tensorflow/models/tree/master/research/adversarial_text

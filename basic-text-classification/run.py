@@ -9,7 +9,7 @@ from tensorflow import keras
 
 import numpy as np
 
-print(tf.__version__)
+print("Tensorflow version: {}".format(tf.__version__))
 
 imdb = keras.datasets.imdb
 
@@ -69,9 +69,8 @@ model.compile(optimizer=tf.train.AdamOptimizer(),
 
 # what is the format of the input? the numeric representation or text?
 
-# which one is the train data and which one is the validation data?
-x_val = train_data[:10000]
-partial_x_train = train_data[10000:]
+x_val = train_data[:10000] # validation data
+partial_x_train = train_data[10000:] # train data
 
 y_val = train_labels[:10000]
 partial_y_train = train_labels[10000:]
@@ -85,46 +84,77 @@ history = model.fit(partial_x_train,
 
 results = model.evaluate(test_data, test_labels)
 
-print(results) # prints [loss, accuracy]
+print("Results [loss, accuracy]: {}".format(results))
+#print(results) # prints [loss, accuracy]
+
+# Predict Single result
+
+test_datum = test_data[1:2] # take the sub array from test_data from index 1 to 2 (so only the entry at index 1)
+# print(test_datum)
+# decoded_test_datum = decode_review(train_data[0])
+# print(decoded_test_datum)
+# test_label = test_labels[1:2] # 1 # test_labels[1:2] = [1], so the correct result against which the prediction is compared is 1
+# single_result = model.evaluate(test_datum, test_label)
+# print('single_result')
+# print(single_result)
+
+predict_batch_size = 32
+predict_verbosity = 1
+predicted_value = model.predict(test_data[:1], predict_batch_size, predict_verbosity)
+# print("predicted value for test_data[1] = " + str(predicted_value[0]) + " vs expected value " + str(test_labels[:1][0]))
+print("Predicted value for test_data[1]: {} vs expected value {}".format(predicted_value[0], test_labels[:1][0]))
+
+filepath = "imdb_stored_model.h5"
+
+tf.keras.models.save_model(
+    model,
+    filepath,
+    overwrite=True,
+    include_optimizer=True
+)
+
+# test_data[:1] take the first
+# test_data[1:] take all after the first
+
 
 # Graph
-
-history_dict = history.history
-history_dict.keys()
-
-import matplotlib.pyplot as plt
-
-acc = history.history['acc']
-val_acc = history.history['val_acc']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-
-epochs = range(1, len(acc) + 1)
-
-# Loss graph
-
-# "bo" is for "blue dot"
-plt.plot(epochs, loss, 'bo', label='Training loss')
-# b is for "solid blue line"
-plt.plot(epochs, val_loss, 'b', label='Validation loss')
-plt.title('Training and validation loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.legend()
-
-plt.show()
-
-# Accuracy graph
-
-plt.clf()   # clear figure
-acc_values = history_dict['acc']
-val_acc_values = history_dict['val_acc']
-
-plt.plot(epochs, acc, 'bo', label='Training acc')
-plt.plot(epochs, val_acc, 'b', label='Validation acc')
-plt.title('Training and validation accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.legend()
-
-plt.show()
+#
+# history_dict = history.history
+# history_dict.keys()
+#
+# import matplotlib.pyplot as plt
+#
+# acc = history.history['acc']
+# val_acc = history.history['val_acc']
+# loss = history.history['loss']
+# val_loss = history.history['val_loss']
+#
+# epochs = range(1, len(acc) + 1)
+#
+# # Loss graph
+#
+# # "bo" is for "blue dot"
+# plt.plot(epochs, loss, 'bo', label='Training loss')
+# # b is for "solid blue line"
+# plt.plot(epochs, val_loss, 'b', label='Validation loss')
+# plt.title('Training and validation loss')
+# plt.xlabel('Epochs')
+# plt.ylabel('Loss')
+# plt.legend()
+#
+# plt.show()
+#
+# # Accuracy graph
+#
+# plt.clf()   # clear figure
+# acc_values = history_dict['acc']
+# val_acc_values = history_dict['val_acc']
+#
+# plt.plot(epochs, acc, 'bo', label='Training acc')
+# plt.plot(epochs, val_acc, 'b', label='Validation acc')
+# plt.title('Training and validation accuracy')
+# plt.xlabel('Epochs')
+# plt.ylabel('Accuracy')
+# plt.legend()
+#
+# plt.show()
