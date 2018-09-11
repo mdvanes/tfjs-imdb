@@ -103,6 +103,8 @@ predict_verbosity = 1
 predicted_value = model.predict(test_data[:1], predict_batch_size, predict_verbosity)
 # print("predicted value for test_data[1] = " + str(predicted_value[0]) + " vs expected value " + str(test_labels[:1][0]))
 print("Predicted value for test_data[1]: {} vs expected value {}".format(predicted_value[0], test_labels[:1][0]))
+# test_data[:1] take the first
+# test_data[1:] take all after the first
 
 filepath = "imdb_stored_model.h5"
 
@@ -113,8 +115,23 @@ tf.keras.models.save_model(
     include_optimizer=True
 )
 
-# test_data[:1] take the first
-# test_data[1:] take all after the first
+# source: https://js.tensorflow.org/tutorials/import-keras.html
+#
+# Conversion from h5:
+#
+# tensorflowjs_converter --input_format keras \
+#     path/to/my_model.h5 \
+#     path/to/tfjs_target_dir
+#
+# Write directly to JSON:
+# import tensorflowjs as tfjs
+#
+# def train(...):
+#     model = keras.models.Sequential()   # for example
+#     ...
+#     model.compile(...)
+#     model.fit(...)
+#     tfjs.converters.save_keras_model(model, tfjs_target_dir)
 
 
 # Graph
