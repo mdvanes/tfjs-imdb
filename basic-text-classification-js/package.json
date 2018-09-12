@@ -12,7 +12,8 @@
     "@tensorflow/tfjs": "^0.12.7"
   },
   "scripts": {
-    "watch": "NODE_ENV=development parcel serve --no-hmr --open index.html "
+    "watch": "parcel serve --no-hmr index.html",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "~6.23.0",
