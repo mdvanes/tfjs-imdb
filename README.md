@@ -77,7 +77,12 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
         * python run.py
     * run a test against the trained model as a final step in the Python script
 * Try to export the model
-* Try to import the model in TensorflowJS    
+* Try to import the model in TensorflowJS
+    * cd basic-text-classification-js
+    * rm -rf dist/
+    * npm use
+    * npm run build
+    * http-server dist/
 
 
 * Try to run this (Python): Adversarial Text Classification  https://github.com/tensorflow/models/tree/master/research/adversarial_text

@@ -12,7 +12,8 @@
     "@tensorflow/tfjs": "^0.12.7"
   },
   "scripts": {
-    "watch": "parcel serve --no-hmr index.html",
+    "watch": "parcel --no-hmr index.html",
+    "build": "mkdir dist && cp ../basic-text-classification-model/* dist/ && parcel build index.html --no-minify --public-url ./",
     "lint": "eslint ."
   },
   "devDependencies": {

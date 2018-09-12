@@ -53,6 +53,8 @@ test_data = keras.preprocessing.sequence.pad_sequences(test_data,
 
 # len(train_data[0]), len(train_data[1])
 
+print("Debug test_data[1]: {} test_labels {}".format(','.join(str(e) for e in test_data[:1][0]), test_labels[:1][0]))
+
 # input shape is the vocabulary count used for the movie reviews (10,000 words)
 vocab_size = 10000
 
