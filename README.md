@@ -62,7 +62,8 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
     * virtualenv --system-site-packages basic-text-classification
     * cd basic-text-classification
     * source ./bin/activate
-    * pip install --upgrade tensorflow
+    * (for ubuntu also possible sudo apt install libhdf5)
+    * pip install -r requirements.txt
     * https://www.tensorflow.org/install/install_mac#run_a_short_tensorflow_program
     * run a small program: `python`
         # Python
@@ -73,8 +74,6 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
     * run (in the same shell) the saved script:
         * cd basic-text-classification
         * source ./bin/activate
-        * (for ubuntu also possible sudo apt install libhdf5)
-        * pip install h5py
         * python run.py
     * run a test against the trained model as a final step in the Python script
 * Try to export the model

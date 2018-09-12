@@ -5,6 +5,7 @@
 # python run.py
 
 import tensorflow as tf
+import tensorflowjs as tfjs
 from tensorflow import keras
 
 import numpy as np
@@ -106,6 +107,8 @@ print("Predicted value for test_data[1]: {} vs expected value {}".format(predict
 # test_data[:1] take the first
 # test_data[1:] take all after the first
 
+# Write h5 model
+
 filepath = "imdb_stored_model.h5"
 
 tf.keras.models.save_model(
@@ -114,6 +117,13 @@ tf.keras.models.save_model(
     overwrite=True,
     include_optimizer=True
 )
+
+
+# Write JSON model
+
+tfjs_target_dir = "../basic-text-classification-model"
+tfjs.converters.save_keras_model(model, tfjs_target_dir)
+
 
 # source: https://js.tensorflow.org/tutorials/import-keras.html
 #
