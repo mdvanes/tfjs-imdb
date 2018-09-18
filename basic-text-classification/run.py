@@ -55,6 +55,19 @@ test_data = keras.preprocessing.sequence.pad_sequences(test_data,
 
 print("Debug test_data[1]: {} test_labels {}".format(','.join(str(e) for e in test_data[:1][0]), test_labels[:1][0]))
 
+for n in range(0, 3):
+    print("2Decoded test_data[{}]: {}".format(n, decode_review(test_data[n])))
+
+# print("Decoded test_data[0]: {}".format(decode_review(test_data[0])))
+# print("Decoded test_data[1]: {}".decode_review(test_data[1]))
+# print("Decoded test_data[2]: {}".decode_review(test_data[2]))
+# print("Decoded test_data[3]: {}".decode_review(test_data[3]))
+# print("Decoded test_data[4]: {}".decode_review(test_data[4]))
+# print("Decoded test_data[5]: {}".decode_review(test_data[5]))
+# print("Decoded test_data[6]: {}".decode_review(test_data[6]))
+# print("Decoded test_data[7]: {}".decode_review(test_data[7]))
+# print("Decoded test_data[8]: {}".decode_review(test_data[8]))
+
 # input shape is the vocabulary count used for the movie reviews (10,000 words)
 vocab_size = 10000
 
@@ -103,11 +116,25 @@ test_datum = test_data[1:2] # take the sub array from test_data from index 1 to 
 
 predict_batch_size = 32
 predict_verbosity = 1
-predicted_value = model.predict(test_data[:1], predict_batch_size, predict_verbosity)
-# print("predicted value for test_data[1] = " + str(predicted_value[0]) + " vs expected value " + str(test_labels[:1][0]))
-print("Predicted value for test_data[1]: {} vs expected value {}".format(predicted_value[0], test_labels[:1][0]))
-# test_data[:1] take the first
-# test_data[1:] take all after the first
+
+# Test with single predictions for logging purposes
+for n in range(0, 9):
+    end = n + 1
+    predicted_value = model.predict(test_data[n:end], predict_batch_size, predict_verbosity)
+    print("Decoded test_data[{}]: {}".format(n, decode_review(test_data[n])))
+    print("Predicted value for test_data[{}]: {} vs expected value {}".format(n, predicted_value[0], test_labels[n:end][0]))
+
+# predicted_value = model.predict(test_data[:1], predict_batch_size, predict_verbosity)
+# # print("predicted value for test_data[1] = " + str(predicted_value[0]) + " vs expected value " + str(test_labels[:1][0]))
+# print("Decoded test_data[0]: {}".format(decode_review(test_data[0])))
+# print("Predicted value for test_data[0]: {} vs expected value {}".format(predicted_value[0], test_labels[:1][0]))
+# # test_data[:1] take the first
+# # test_data[1:] take all after the first
+
+# print("Decoded test_data[1]: {}".format(decode_review(test_data[1])))
+# predicted_value = model.predict(test_data[1:2], predict_batch_size, predict_verbosity)
+# # print(test_data[1:2])
+# print("Predicted value for test_data[1]: {} vs expected value {}".format(predicted_value[0], test_labels[1:2][0]))
 
 # Write h5 model
 
