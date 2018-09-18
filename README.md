@@ -80,9 +80,14 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
 * Try to import the model in TensorflowJS
     * cd basic-text-classification-js
     * rm -rf dist/
-    * npm use
+    * nvm use
     * npm run build
     * http-server dist/
+* TODO improve JS build - `npm run watch` fails, because group1-shard1of1 is not loading the bin, but index.html. It is 
+    difficult to figure out how to let parcel include this group1-shard1of1 in the dev server. 
+* TODO build a UI with web components + lit-html
+* TODO real time input of (English) text and show classification. Also have some example texts available. 
+* TODO call translation API to be able to support Dutch
 
 
 * Try to run this (Python): Adversarial Text Classification  https://github.com/tensorflow/models/tree/master/research/adversarial_text
