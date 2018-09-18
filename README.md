@@ -83,6 +83,9 @@ Duration of fitting5000 for 5000 epochs: 1696989ms
     * nvm use
     * npm run build
     * http-server dist/
+* Run the dev server:
+    * nvm use
+    * npm run watch
 * TODO improve JS build - `npm run watch` fails, because group1-shard1of1 is not loading the bin, but index.html. It is 
     difficult to figure out how to let parcel include this group1-shard1of1 in the dev server. 
 * TODO build a UI with web components + lit-html
