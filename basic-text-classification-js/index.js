@@ -8,8 +8,6 @@ import './elements/Result';
 
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 
-// TODO add more examples
-
 const run = async () => {
   const {protocol, hostname, port} = location;
   const modelPort = port === '1234' ? '1235' : port;
