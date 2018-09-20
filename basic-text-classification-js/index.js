@@ -100,10 +100,12 @@ class PredictImdb {
 }
 
 const run = async () => {
-  const port = location.port === '1234' ? '1235' : '8080';
+  const {protocol, hostname, port} = location;
+  const modelPort = port === '1234' ? '1235' : port;
+  const modelOrigin = `${protocol}//${hostname}:${modelPort}`;
 
-  const model = await tf.loadModel(`http://localhost:${port}/model.json`);
-  const metadata = await loadHostedMetadata(`http://localhost:${port}/metadata.json`);
+  const model = await tf.loadModel(`${modelOrigin}/model.json`);
+  const metadata = await loadHostedMetadata(`${modelOrigin}/metadata.json`);
   const predictImdb = new PredictImdb(model, metadata);
 
   // For this input: '1,591,202,14,31,6,717,10,10,2,2,5,4,360,7,4,177,5760,394,354,4,123,9,1035,1035,1035,10,10,13,92,124,89,488,7944,100,28,1668,14,31,23,27,7479,29,220,468,8,124,14,286,170,8,157,46,5,27,239,16,179,2,38,32,25,7944,451,202,14,6,717,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'

@@ -1,3 +1,22 @@
+> Example TensorflowJS app for text classification
+
+The JavaScript app in `/basic-text-classification-js` is effectively a reimplementation of 
+the ["sentiment" example](https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js).
+It was build to get started with text classification with TensorflowJS. To obtain the Keras model, a Tensorflow app
+was build in Python (see `/basic-text-classification/run.py`), implementing [this example](https://www.tensorflow.org/tutorials/keras/basic_text_classification).
+The exported model is stored in `/basic-text-classification-model`.
+
+The JavaScript app was build from scratch, and to get `parcel serve` and `model.predict` to work, I referred to 
+the ["sentiment" example](https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js).
+
+# Run
+
+* `cd basic-text-classification-js`
+* `nvm use`
+* `npm run watch`
+* open browser at http://localhost:1234
+
+
 # Basics
 
 To run the first tutorials from "https://medium.com/tensorflow/a-gentle-introduction-to-tensorflow-js-dba2e5257702":

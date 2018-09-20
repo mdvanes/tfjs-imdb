@@ -14,7 +14,7 @@
   },
   "scripts": {
     "watch": "./serve.sh",
-    "build": "mkdir dist && cp ../basic-text-classification-model/* dist/ && parcel build index.html --no-minify --public-url ./",
+    "build": "cp ../basic-text-classification-model/* ../docs/ && cp dist/metadata.json ../docs/ &&parcel build index.html -d ../docs --no-minify --public-url ./",
     "lint": "eslint ."
   },
   "devDependencies": {
