@@ -121,11 +121,13 @@ const run = async () => {
   const result = predictImdb.predict(exampleAsText, '0', 'my example');
   console.log(result);
 
-  document.querySelector('t-result').body = result;
+  const resultElem = document.querySelector('t-result');
+  resultElem.body = result;
+  // resultElem.addResult(result);
 
   predictImdb
     .batchPredict(exampleReviewObj)
-    .map(result => console.log(result));
+    .map(result => resultElem.addResult(result));
 };
 
 run();
