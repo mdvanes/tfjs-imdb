@@ -9,12 +9,12 @@ import './elements/Results';
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 
 const run = async () => {
-  const {protocol, hostname, port} = location;
+  const {protocol, hostname, port, href} = location;
   const modelPort = port === '1234' ? '1235' : port;
-  const modelOrigin = `${protocol}//${hostname}:${modelPort}`;
+  const modelHref = port === '1234' ? `${protocol}//${hostname}:${modelPort}/` : href;
 
-  const model = await tf.loadModel(`${modelOrigin}/model.json`);
-  const metadata = await loadHostedMetadata(`${modelOrigin}/metadata.json`);
+  const model = await tf.loadModel(`${modelHref}model.json`);
+  const metadata = await loadHostedMetadata(`${modelHref}metadata.json`);
   const predictImdb = new PredictImdb(model, metadata);
 
   const result = compareExample(predictImdb);

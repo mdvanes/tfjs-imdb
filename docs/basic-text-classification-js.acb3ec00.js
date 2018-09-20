@@ -37385,12 +37385,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 const run = (() => {
   var _ref = _asyncToGenerator(function* () {
-    const { protocol, hostname, port } = location;
+    const { protocol, hostname, port, href } = location;
     const modelPort = port === '1234' ? '1235' : port;
-    const modelOrigin = `${protocol}//${hostname}:${modelPort}`;
+    const modelHref = port === '1234' ? `${protocol}//${hostname}:${modelPort}/` : href;
 
-    const model = yield tf.loadModel(`${modelOrigin}/model.json`);
-    const metadata = yield (0, _loadUtil.loadHostedMetadata)(`${modelOrigin}/metadata.json`);
+    const model = yield tf.loadModel(`${modelHref}model.json`);
+    const metadata = yield (0, _loadUtil.loadHostedMetadata)(`${modelHref}metadata.json`);
     const predictImdb = new _PredictImdb2.default(model, metadata);
 
     const result = (0, _exampleUtil.compareExample)(predictImdb);
@@ -37410,4 +37410,4 @@ const run = (() => {
 
 run();
 },{"core-js/modules/es7.object.values":"cZE6","core-js/modules/es7.object.entries":"beat","core-js/modules/es7.object.get-own-property-descriptors":"MZQr","core-js/modules/es7.string.pad-start":"fWC9","core-js/modules/es7.string.pad-end":"XG7E","core-js/modules/web.timers":"47+F","core-js/modules/web.immediate":"hg3C","core-js/modules/web.dom.iterable":"hFdU","@tensorflow/tfjs":"cHV2","./exampleReviews":"W5rS","./load-util":"J7fA","./example-util":"2FSJ","./PredictImdb":"RTzk","./elements/Results":"8tD8"}]},{},["Focm"], null)
-//# sourceMappingURL=basic-text-classification-js.8b7af7b1.map
+//# sourceMappingURL=basic-text-classification-js.a4784dd0.map
