@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import * as tf from '@tensorflow/tfjs';
 import {exampleReviewObj} from "./exampleReviews";
+import './elements/Result';
 
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 

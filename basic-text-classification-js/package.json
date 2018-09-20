@@ -24,6 +24,7 @@
     "babel-runtime": "6.26.0",
     "eslint": "^5.5.0",
     "eslint-config-google": "^0.10.0",
+    "lit-html": "^0.11.4",
     "parcel-bundler": "^1.9.7"
   },
   "eslintConfig": {
