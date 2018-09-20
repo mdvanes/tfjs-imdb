@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "env", {
+      "targets": {
+        "browsers": [
+          "Chrome >= 52"
+        ]
+      },
+      "useBuiltIns": true
+    }
+    ]
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "syntax-class-properties"
+  ]
+}
