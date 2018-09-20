@@ -20,6 +20,11 @@ class Results extends LitElement {
     this.results = [];
   }
 
+  // Do not create shadow root
+  createRenderRoot() {
+    return this;
+  }
+
   addResult(result) {
     console.log('Adding result:', result);
     this.results.push(result);
