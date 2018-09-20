@@ -1,6 +1,6 @@
 import {LitElement, html, property} from '@polymer/lit-element';
 
-const data = {title: 'Hello', body: 'General Kenobi'};
+const data = {title: 'Result', body: 'Running...'};
 
 // See https://github.com/mdvanes/realtime-planner/blob/a611aaba2febfa0723092b09d139cc78a0ba3bd4/src/LatestTweet.ts
 class Result extends LitElement {
@@ -20,9 +20,12 @@ class Result extends LitElement {
 
   render() {
     return html`
-        <style> .mood { color: green; } </style>
-            <h1><span class="mood">${this.title}</span> there</h1>
-            <p>${this.body}</p>`;
+        <style> 
+            .custom-header { color: green; }
+        </style>
+        <h1 class="custom-header">${this.title}</h1>
+        <p>${this.body}</p>
+    `;
   }
 
 }
