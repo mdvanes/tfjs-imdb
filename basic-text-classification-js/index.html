@@ -8,6 +8,15 @@
     html, body {
       height: 100%;
     }
+
+    .browser-warning {
+      margin-bottom: 1em;
+      min-height: auto;
+    }
+
+    .browser-warning > div {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -37,6 +46,12 @@
   <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset">
+
+        <div class="mdl-card mdl-shadow--2dp browser-warning" style="width: 100%;">
+          <div class="mdl-card__supporting-text">
+            This app only works with <a href="https://www.google.com/chrome/">Chrome</a>.
+          </div>
+        </div>
 
         <t-results></t-results>
 
