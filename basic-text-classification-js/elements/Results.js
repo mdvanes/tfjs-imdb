@@ -3,7 +3,7 @@ import {LitElement, html, property} from '@polymer/lit-element';
 const data = {title: 'Results', body: 'Running...'};
 
 // See https://github.com/mdvanes/realtime-planner/blob/a611aaba2febfa0723092b09d139cc78a0ba3bd4/src/LatestTweet.ts
-class Result extends LitElement {
+class Results extends LitElement {
 
   static get properties() {
     return {
@@ -38,12 +38,18 @@ class Result extends LitElement {
         <style> 
             .custom-header { color: green; }
         </style>
-        <h1 class="custom-header">${this.title}</h1>
-        <p>${this.body}</p>
-        ${list}
+        <div class="mdl-card mdl-shadow--2dp" style="width: 100%;">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text custom-header">${this.title}</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p>${this.body}</p>
+            ${list}
+          </div>
+        </div>
     `;
   }
 
 }
 
-customElements.define('t-result', Result);
+customElements.define('t-results', Results);

@@ -4,7 +4,7 @@ import { exampleReviewObj } from './exampleReviews';
 import { loadHostedMetadata } from './load-util';
 import { compareExample } from './example-util';
 import PredictImdb from './PredictImdb';
-import './elements/Result';
+import './elements/Results';
 
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 
@@ -19,7 +19,7 @@ const run = async () => {
 
   const result = compareExample(predictImdb);
 
-  const resultElem = document.querySelector('t-result');
+  const resultElem = document.querySelector('t-results');
   resultElem.body = result;
 
   predictImdb

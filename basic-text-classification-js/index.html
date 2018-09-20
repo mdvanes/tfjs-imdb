@@ -2,17 +2,59 @@
 <html>
 <head>
   <title>TensorFlow.js basic text classification</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_orange-indigo.min.css">
   <style>
     html, body {
-      font-family: sans-serif;
+      height: 100%;
     }
   </style>
 </head>
 <body>
-<h1>TensorFlow.js basic text classification</h1>
-<p>Look in the JavaScript console.</p>
 
-<t-result></t-result>
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout__title">TensorFlow.js basic text classification</span>
+      <div class="mdl-layout-spacer"></div>
+      <!--<nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#">Nav link 1</a>
+        <a class="mdl-navigation__link" href="#">Nav link 2</a>
+        <a class="mdl-navigation__link" href="#">Nav link 3</a>
+      </nav>-->
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout__title">TensorFlow.js basic text classification</span>
+    <!--<nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="#">Nav link 1</a>
+      <a class="mdl-navigation__link" href="#">Nav link 2</a>
+      <a class="mdl-navigation__link" href="#">Nav link 3</a>
+    </nav>-->
+  </div>
+
+  <main class="mdl-layout__content mdl-color--grey-100">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--8-col mdl-cell--2-offset">
+
+        <t-results></t-results>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">mdworld.nl</div>
+      <ul class="mdl-mini-footer__link-list">
+        <li>
+          <a href="https://github.com/mdvanes/tfjs-imdb">Github</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</div>
 
 <script src="index.js"></script>
 </body>
