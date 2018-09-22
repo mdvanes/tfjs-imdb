@@ -60,17 +60,17 @@
           <div class="mdl-card__supporting-text">
           <style>
             circle {
-              fill: #ddd;
-              stroke: red;
-              stroke-width: 50%;
-              stroke-dasharray: 0, 156;
+              fill: #f5f5f5;
+              stroke: #d50000;
+              stroke-width: 25%;
+              stroke-dasharray: 0, 321;
               transition: stroke-dasharray .3s ease, stroke 1s ease;
             }
 
             .chart {
               margin: 0 auto;
               transform: rotate(-90deg);
-              background: #ddd;
+              background: #424242;
               border-radius: 50%;
               display: block;
             }
@@ -88,23 +88,24 @@
               }*/
           </style>
 
-          <svg width="100" height="100" class="chart">
-            <circle r="25" cx="50" cy="50" class="pie"/>
+          <svg width="150" height="150" class="chart">
+            <circle r="50" cx="75" cy="75" class="pie"/>
           </svg>
           <script>
             const pie = document.querySelector('.pie');
             setTimeout(() => {
-              // 100% is 156, 25% is 39, 75% is 117
-              pie.style.strokeDasharray = '39, 117';
+              // 100% is 156 when r=25, 25% is 39, 75% is 117
+              // 100% is 321 when r=50?
+              pie.style.strokeDasharray = '78, 234';
             }, 1000);
             setTimeout(() => {
               // 100% is 156, 25% is 39, 75% is 117
-              pie.style.strokeDasharray = '117, 39';
+              pie.style.strokeDasharray = '234, 78';
             }, 2000);
             setTimeout(() => {
               // 100% is 156, 25% is 39, 75% is 117
-              pie.style.strokeDasharray = '156';
-              pie.style.stroke = 'green';
+              pie.style.strokeDasharray = '321';
+              pie.style.stroke = 'mediumspringgreen';
             }, 3000);
 
           </script>
