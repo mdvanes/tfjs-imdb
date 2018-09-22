@@ -1,6 +1,6 @@
 import {LitElement, html, property} from '@polymer/lit-element';
 
-const data = {title: 'Results', body: 'Running...'};
+const data = {title: 'Results', body: html`<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>`};
 
 // See https://github.com/mdvanes/realtime-planner/blob/a611aaba2febfa0723092b09d139cc78a0ba3bd4/src/LatestTweet.ts
 class Results extends LitElement {
@@ -37,7 +37,7 @@ class Results extends LitElement {
             ${this.results.map(result => html`<li>${result}</li>`)}
         </ul>
       `
-      : 'Loading result list...';
+      : html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
 
     return html`
         <style> 
