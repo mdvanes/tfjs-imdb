@@ -5,6 +5,7 @@ import { loadHostedMetadata } from './load-util';
 import { compareExample } from './example-util';
 import PredictImdb from './PredictImdb';
 import './elements/Results';
+import './elements/RealTimePredict';
 
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 
