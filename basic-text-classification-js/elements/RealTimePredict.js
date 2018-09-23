@@ -3,20 +3,21 @@ import './ExampleReviewText';
 
 class RealTimePredict extends LitElement {
 
-  // static get properties() {
-  //   return {
-  //     title: {type: String},
-  //     body: {type: String},
-  //     results: {type: Array}
-  //   };
-  // }
-  //
-  // constructor() {
-  //   super();
-  //   this.title = data.title;
-  //   this.body = data.body;
-  //   this.results = [];
-  // }
+  static get properties() {
+    return {
+      escapedValue: {type: String},
+    };
+  }
+
+  constructor() {
+    super();
+    this.escapedValue = 'abc';
+
+    // TODO bind (with RxJS) to the textarea. Onchange, update the prediction.
+    // TODO min & max length to respond to changes
+    // TODO throttle onchange
+    // TODO add escaping/sanitizing
+  }
 
   // Do not create shadow root
   createRenderRoot() {
@@ -31,9 +32,10 @@ class RealTimePredict extends LitElement {
             <h2 class="mdl-card__title-text">Type review:</h2>
           </div>
           <div class="mdl-card__supporting-text">
-            <textarea style="border: 1px dotted black"></textarea>
+            <textarea style="border: 1px dotted black; width: 100%; height: 200px;"></textarea>
             <br>
             escaped value:
+            <div style="border: 1px dashed blue;">${this.escapedValue}</div>
             <br> 
             prediction: 
           </div>
