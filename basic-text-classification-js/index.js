@@ -26,6 +26,9 @@ const run = async () => {
   predictImdb
     .batchPredict(exampleReviewObj)
     .map(result => resultElem.addResult(result));
+
+  const realTimePredictElem = document.querySelector('real-time-predict');
+  realTimePredictElem.predictor = predictImdb;
 };
 
 run();

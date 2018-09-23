@@ -6,22 +6,34 @@ class RealTimePredict extends LitElement {
   static get properties() {
     return {
       escapedValue: {type: String},
+      predictor: {type: Object}
     };
   }
 
   constructor() {
     super();
-    this.escapedValue = 'abc';
+    this.escapedValue = '';
 
     // TODO bind (with RxJS) to the textarea. Onchange, update the prediction.
     // TODO min & max length to respond to changes
     // TODO throttle onchange
     // TODO add escaping/sanitizing
+    // TODO add multiple examples
   }
 
   // Do not create shadow root
   createRenderRoot() {
     return this;
+  }
+
+  _handleChange(ev) {
+    this.escapedValue = ev.target.value;
+    if(this.predictor) {
+      const resultValue = this.predictor.predict(this.escapedValue, 0, '', true);
+      this.result = resultValue >= 0.5 ? `👍 (${resultValue})` : `👎 (${resultValue})`;
+    } else {
+      alert('no predictor set')
+    }
   }
 
   render() {
@@ -32,12 +44,13 @@ class RealTimePredict extends LitElement {
             <h2 class="mdl-card__title-text">Type review:</h2>
           </div>
           <div class="mdl-card__supporting-text">
-            <textarea style="border: 1px dotted black; width: 100%; height: 200px;"></textarea>
-            <br>
+            <textarea style="border: 1px dotted black; width: 100%; height: 200px;" @change="${(e) => this._handleChange(e)}"></textarea>
             escaped value:
-            <div style="border: 1px dashed blue;">${this.escapedValue}</div>
+            <div style="border: 1px dashed blue; max-height: 100px; overflow-y: scroll;">${this.escapedValue}</div>
             <br> 
-            prediction: 
+            prediction:
+            <br>
+            <div>${this.result}</div>
           </div>
         </div>
         <example-review-text class="mdl-cell mdl-cell--6-col"></example-review-text>
