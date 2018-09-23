@@ -14627,7 +14627,7 @@ module.exports = {
   "_args": [
     [
       "elliptic@6.4.1",
-      "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js"
+      "/home/martin/ZNoBackup/tfjs-imdb/basic-text-classification-js"
     ]
   ],
   "_development": true,
@@ -14653,7 +14653,7 @@ module.exports = {
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
   "_spec": "6.4.1",
-  "_where": "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js",
+  "_where": "/home/martin/ZNoBackup/tfjs-imdb/basic-text-classification-js",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -35127,9 +35127,10 @@ let PredictImdb = class PredictImdb {
    * @param (required) reviewText
    * @param (optional) expectedResult - add this expected result to the output
    * @param (optional) description - add this description of the reviewText to the output
+   * @param (optional) isRaw - boolean to indicate that only the raw prediction, an unrounded float, should be returned.
    * @returns {string} A text containing the prediction, expected value and description
    */
-  predict(reviewText, expectedResult, description) {
+  predict(reviewText, expectedResult, description, isRaw = false) {
     // Encode the text with metadata.word_index and see if the result is equal to `example`
     const encodedReview = this.encodeReview(reviewText);
 
@@ -35149,7 +35150,7 @@ let PredictImdb = class PredictImdb {
     const result = `Prediction${descriptionLabel}${expectedResultLabel} is ${Math.round(predictionValue)} (${predictionValue} before rounding)`;
     prediction.dispose();
 
-    return result;
+    return isRaw ? predictionValue : result;
   }
 
   batchPredict(reviewsObj) {
@@ -35161,7 +35162,7 @@ let PredictImdb = class PredictImdb {
   }
 };
 exports.default = PredictImdb;
-},{"@tensorflow/tfjs/dist/index":"fHyk"}],"IX47":[function(require,module,exports) {
+},{"@tensorflow/tfjs/dist/index":"fHyk"}],"kXJ6":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35363,7 +35364,7 @@ const createMarker = exports.createMarker = () => document.createComment('');
  */
 const lastAttributeNameRegex = exports.lastAttributeNameRegex = /([ \x09\x0a\x0c\x0d])([^\0-\x1F\x7F-\x9F \x09\x0a\x0c\x0d"'>=/]+)([ \x09\x0a\x0c\x0d]*=[ \x09\x0a\x0c\x0d]*(?:[^ \x09\x0a\x0c\x0d"'`<>=]*|"[^"]*|'[^']*))$/;
 //# sourceMappingURL=template.js.map
-},{}],"uuhF":[function(require,module,exports) {
+},{}],"TOsx":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35498,7 +35499,7 @@ function insertNodeIntoTemplate(template, node, refNode = null) {
     }
 }
 //# sourceMappingURL=modify-template.js.map
-},{"./template.js":"IX47"}],"BAQD":[function(require,module,exports) {
+},{"./template.js":"kXJ6"}],"JQ4u":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35545,7 +35546,7 @@ const removeNodes = exports.removeNodes = (container, startNode, endNode = null)
     }
 };
 //# sourceMappingURL=dom.js.map
-},{}],"ZHdK":[function(require,module,exports) {
+},{}],"P1HH":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35571,7 +35572,7 @@ const directive = exports.directive = f => {
 };
 const isDirective = exports.isDirective = o => typeof o === 'function' && directives.has(o);
 //# sourceMappingURL=directive.js.map
-},{}],"0nHM":[function(require,module,exports) {
+},{}],"m4zr":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35583,7 +35584,7 @@ Object.defineProperty(exports, "__esModule", {
  */
 const noChange = exports.noChange = {};
 //# sourceMappingURL=part.js.map
-},{}],"trld":[function(require,module,exports) {
+},{}],"nn5n":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35687,7 +35688,7 @@ class TemplateInstance {
     }
 }
 exports.TemplateInstance = TemplateInstance; //# sourceMappingURL=template-instance.js.map
-},{"./dom.js":"BAQD","./template.js":"IX47"}],"dzAj":[function(require,module,exports) {
+},{"./dom.js":"JQ4u","./template.js":"kXJ6"}],"SM33":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35780,7 +35781,7 @@ class SVGTemplateResult extends TemplateResult {
     }
 }
 exports.SVGTemplateResult = SVGTemplateResult; //# sourceMappingURL=template-result.js.map
-},{"./dom.js":"BAQD","./template.js":"IX47"}],"msph":[function(require,module,exports) {
+},{"./dom.js":"JQ4u","./template.js":"kXJ6"}],"PIiJ":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36177,7 +36178,7 @@ class EventPart {
     }
 }
 exports.EventPart = EventPart; //# sourceMappingURL=parts.js.map
-},{"./directive.js":"ZHdK","./dom.js":"BAQD","./part.js":"0nHM","./template-instance.js":"trld","./template-result.js":"dzAj","./template.js":"IX47"}],"VkYL":[function(require,module,exports) {
+},{"./directive.js":"P1HH","./dom.js":"JQ4u","./part.js":"m4zr","./template-instance.js":"nn5n","./template-result.js":"SM33","./template.js":"kXJ6"}],"K8aL":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36223,7 +36224,7 @@ function templateFactory(result) {
  */
 const templateCaches = exports.templateCaches = new Map();
 //# sourceMappingURL=template-factory.js.map
-},{"./template.js":"IX47"}],"NWXj":[function(require,module,exports) {
+},{"./template.js":"kXJ6"}],"dvwX":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36277,7 +36278,7 @@ function render(result, container, templateFactory = _templateFactory.templateFa
   part.commit();
 }
 //# sourceMappingURL=render.js.map
-},{"./dom.js":"BAQD","./parts.js":"msph","./template-factory.js":"VkYL"}],"elJF":[function(require,module,exports) {
+},{"./dom.js":"JQ4u","./parts.js":"PIiJ","./template-factory.js":"K8aL"}],"mAZn":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36339,7 +36340,7 @@ exports.DefaultTemplateProcessor = DefaultTemplateProcessor; /**
 
 const defaultTemplateProcessor = exports.defaultTemplateProcessor = new DefaultTemplateProcessor();
 //# sourceMappingURL=default-template-processor.js.map
-},{"./parts.js":"msph"}],"N9X9":[function(require,module,exports) {
+},{"./parts.js":"PIiJ"}],"KMqM":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36491,7 +36492,7 @@ const html = exports.html = (strings, ...values) => new _templateResult.Template
  */
 const svg = exports.svg = (strings, ...values) => new _templateResult.SVGTemplateResult(strings, values, 'svg', _defaultTemplateProcessor.defaultTemplateProcessor);
 //# sourceMappingURL=lit-html.js.map
-},{"./lib/default-template-processor.js":"elJF","./lib/template-result.js":"dzAj","./lib/template.js":"IX47","./lib/template-instance.js":"trld","./lib/part.js":"0nHM","./lib/parts.js":"msph","./lib/dom.js":"BAQD","./lib/directive.js":"ZHdK","./lib/render.js":"NWXj","./lib/template-factory.js":"VkYL"}],"v107":[function(require,module,exports) {
+},{"./lib/default-template-processor.js":"mAZn","./lib/template-result.js":"SM33","./lib/template.js":"kXJ6","./lib/template-instance.js":"nn5n","./lib/part.js":"m4zr","./lib/parts.js":"PIiJ","./lib/dom.js":"JQ4u","./lib/directive.js":"P1HH","./lib/render.js":"dvwX","./lib/template-factory.js":"K8aL"}],"4cx+":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36661,7 +36662,7 @@ function render(result, container, scopeName) {
     }
 }
 //# sourceMappingURL=shady-render.js.map
-},{"./modify-template.js":"uuhF","./render.js":"NWXj","./template-factory.js":"VkYL","./template-result.js":"dzAj","./template.js":"IX47","../lit-html.js":"N9X9"}],"Di0A":[function(require,module,exports) {
+},{"./modify-template.js":"TOsx","./render.js":"dvwX","./template-factory.js":"K8aL","./template-result.js":"SM33","./template.js":"kXJ6","../lit-html.js":"KMqM"}],"Di0A":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37278,12 +37279,12 @@ exports.LitElement = LitElement; /**
 
 LitElement.render = _shadyRender.render;
 //# sourceMappingURL=lit-element.js.map
-},{"lit-html/lib/shady-render":"v107","./lib/updating-element.js":"Di0A","./lib/decorators.js":"DDXd","lit-html/lit-html":"N9X9"}],"8tD8":[function(require,module,exports) {
+},{"lit-html/lib/shady-render":"4cx+","./lib/updating-element.js":"Di0A","./lib/decorators.js":"DDXd","lit-html/lit-html":"KMqM"}],"8tD8":[function(require,module,exports) {
 'use strict';
 
 var _litElement = require('@polymer/lit-element');
 
-const data = { title: 'Results', body: 'Running...' };
+const data = { title: 'Results', body: _litElement.html`<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>` };
 
 // See https://github.com/mdvanes/realtime-planner/blob/a611aaba2febfa0723092b09d139cc78a0ba3bd4/src/LatestTweet.ts
 let Results = class Results extends _litElement.LitElement {
@@ -37318,7 +37319,7 @@ let Results = class Results extends _litElement.LitElement {
         <ul>
             ${this.results.map(result => _litElement.html`<li>${result}</li>`)}
         </ul>
-      ` : 'Loading result list...';
+      ` : _litElement.html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
 
     return _litElement.html`
         <style> 
@@ -37340,7 +37341,118 @@ let Results = class Results extends _litElement.LitElement {
 
 
 customElements.define('t-results', Results);
-},{"@polymer/lit-element":"wOtC"}],"Focm":[function(require,module,exports) {
+},{"@polymer/lit-element":"wOtC"}],"20Gq":[function(require,module,exports) {
+'use strict';
+
+var _litElement = require('@polymer/lit-element');
+
+let ExampleReviewText = class ExampleReviewText extends _litElement.LitElement {
+
+  // Do not create shadow root
+  createRenderRoot() {
+    return this;
+  }
+
+  /*
+  Source:
+  Review for "That Cold Day in the Park (1969)"
+  https://www.imdb.com/title/tt0065086/reviews?ref_=tt_urv
+   Original text:
+   This film requires a lot of patience. Because it focuses on mood and character development, the plot is very simple and many of the scenes take place on the same set - in Frances Austen's (the Sandy Dennis character) apartment. But the film builds to a disturbing climax.
+  The characters create an atmosphere rife with sexual tension and psychological trickery. It's very interesting that Robert Altman directed this, considering the style and structure of his other films. Still, the trademark Altman audio style is evident here and there. I think what really makes this film work is the brilliant performance by Sandy Dennis. It's definitely one of her darker characters, but she plays it so perfectly and convincingly that it's scary. Michael Burns does a good job as the "mute" young man. Regular Altman player Michael Murphy has a small part. The solemn, moody set fits the content of the story very well. In short, this movie is a powerful study of loneliness, sexual repression, and desperation. Be patient, soak up the atmosphere, and pay attention to the wonderfully written script.
+  I praise Robert Altman. This is one of his many films that deals with unconventional, fascinating subject matter. This film is disturbing, but it's sincere and it's sure to elicit a strong emotional response from the viewer. If you want to see an unusual film - some might even say bizarre - this is worth the time.
+  Unfortunately, it's very difficult to find in video stores. You may have to buy it off the internet.
+   */
+
+  render() {
+    return _litElement.html`
+      <div class="mdl-card mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Example review</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <p>
+              <a href="https://www.imdb.com/title/tt0065086/reviews?ref_=tt_urv">Review for "That Cold Day in the Park (1969)"</a>
+            </p>
+            <div>a lot of patience because it focuses on mood and character development the plot is very simple and many of the scenes take place on the same set in frances <UNK> the sandy dennis character apartment but the film builds to a disturbing climax br br the characters create an atmosphere <UNK> with sexual tension and psychological <UNK> it's very interesting that robert altman directed this considering the style and structure of his other films still the trademark altman audio style is evident here and there i think what really makes this film work is the brilliant performance by sandy dennis it's definitely one of her darker characters but she plays it so perfectly and convincingly that it's scary michael burns does a good job as the mute young man regular altman player michael murphy has a small part the <UNK> moody set fits the content of the story very well in short this movie is a powerful study of loneliness sexual <UNK> and desperation be patient <UNK> up the atmosphere and pay attention to the wonderfully written script br br i praise robert altman this is one of his many films that deals with unconventional fascinating subject matter this film is disturbing but it's sincere and it's sure to <UNK> a strong emotional response from the viewer if you want to see an unusual film some might even say bizarre this is worth the time br br unfortunately it's very difficult to find in video stores you may have to buy it off the internet</div>
+        </div>
+      </div>
+    `;
+  }
+
+};
+
+
+customElements.define('example-review-text', ExampleReviewText);
+},{"@polymer/lit-element":"wOtC"}],"oTOE":[function(require,module,exports) {
+'use strict';
+
+var _litElement = require('@polymer/lit-element');
+
+require('./ExampleReviewText');
+
+let RealTimePredict = class RealTimePredict extends _litElement.LitElement {
+
+  static get properties() {
+    return {
+      escapedValue: { type: String },
+      predictor: { type: Object }
+    };
+  }
+
+  constructor() {
+    super();
+    this.escapedValue = '';
+
+    // TODO add escaping/sanitizing
+    // TODO add multiple examples
+    // TODO bind (with RxJS) to the textarea. Onchange, update the prediction.
+    // TODO min & max length to respond to changes
+    // TODO throttle onchange
+  }
+
+  // Do not create shadow root
+  createRenderRoot() {
+    return this;
+  }
+
+  _handleChange(ev) {
+    this.escapedValue = ev.target.value;
+    if (this.predictor) {
+      const resultValue = this.predictor.predict(this.escapedValue, 0, '', true);
+      this.result = resultValue >= 0.5 ? `👍 (${resultValue})` : `👎 (${resultValue})`;
+    } else {
+      alert('no predictor set');
+    }
+  }
+
+  render() {
+    return _litElement.html`
+      <div class="mdl-grid" style="max-width: 950px;">
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Type review:</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <textarea style="border: 1px dotted black; width: 100%; height: 200px;" @change="${e => this._handleChange(e)}"></textarea>
+            escaped value:
+            <div style="border: 1px dashed blue; max-height: 100px; overflow-y: scroll;">${this.escapedValue}</div>
+            <br> 
+            prediction:
+            <br>
+            <div>${this.result}</div>
+          </div>
+        </div>
+        <example-review-text class="mdl-cell mdl-cell--6-col"></example-review-text>
+      </div>
+    `;
+  }
+
+};
+
+
+customElements.define('real-time-predict', RealTimePredict);
+},{"@polymer/lit-element":"wOtC","./ExampleReviewText":"20Gq"}],"Focm":[function(require,module,exports) {
 'use strict';
 
 require('core-js/modules/es7.object.values');
@@ -37375,6 +37487,8 @@ var _PredictImdb2 = _interopRequireDefault(_PredictImdb);
 
 require('./elements/Results');
 
+require('./elements/RealTimePredict');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -37401,6 +37515,9 @@ const run = (() => {
     predictImdb.batchPredict(_exampleReviews.exampleReviewObj).map(function (result) {
       return resultElem.addResult(result);
     });
+
+    const realTimePredictElem = document.querySelector('real-time-predict');
+    realTimePredictElem.predictor = predictImdb;
   });
 
   return function run() {
@@ -37409,5 +37526,5 @@ const run = (() => {
 })();
 
 run();
-},{"core-js/modules/es7.object.values":"cZE6","core-js/modules/es7.object.entries":"beat","core-js/modules/es7.object.get-own-property-descriptors":"MZQr","core-js/modules/es7.string.pad-start":"fWC9","core-js/modules/es7.string.pad-end":"XG7E","core-js/modules/web.timers":"47+F","core-js/modules/web.immediate":"hg3C","core-js/modules/web.dom.iterable":"hFdU","@tensorflow/tfjs":"cHV2","./exampleReviews":"W5rS","./load-util":"J7fA","./example-util":"2FSJ","./PredictImdb":"RTzk","./elements/Results":"8tD8"}]},{},["Focm"], null)
-//# sourceMappingURL=basic-text-classification-js.a4784dd0.map
+},{"core-js/modules/es7.object.values":"cZE6","core-js/modules/es7.object.entries":"beat","core-js/modules/es7.object.get-own-property-descriptors":"MZQr","core-js/modules/es7.string.pad-start":"fWC9","core-js/modules/es7.string.pad-end":"XG7E","core-js/modules/web.timers":"47+F","core-js/modules/web.immediate":"hg3C","core-js/modules/web.dom.iterable":"hFdU","@tensorflow/tfjs":"cHV2","./exampleReviews":"W5rS","./load-util":"J7fA","./example-util":"2FSJ","./PredictImdb":"RTzk","./elements/Results":"8tD8","./elements/RealTimePredict":"oTOE"}]},{},["Focm"], null)
+//# sourceMappingURL=basic-text-classification-js.25e55736.map

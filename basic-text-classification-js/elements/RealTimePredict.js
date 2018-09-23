@@ -14,11 +14,11 @@ class RealTimePredict extends LitElement {
     super();
     this.escapedValue = '';
 
+    // TODO add escaping/sanitizing
+    // TODO add multiple examples
     // TODO bind (with RxJS) to the textarea. Onchange, update the prediction.
     // TODO min & max length to respond to changes
     // TODO throttle onchange
-    // TODO add escaping/sanitizing
-    // TODO add multiple examples
   }
 
   // Do not create shadow root
