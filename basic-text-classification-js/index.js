@@ -6,6 +6,7 @@ import { compareExample } from './example-util';
 import PredictImdb from './PredictImdb';
 import './elements/Results';
 import './elements/RealTimePredict';
+import './elements/Donut';
 
 // This effectively a re-implementation of https://github.com/tensorflow/tfjs-examples/blob/master/sentiment/index.js
 
@@ -29,6 +30,8 @@ const run = async () => {
 
   const realTimePredictElem = document.querySelector('real-time-predict');
   realTimePredictElem.predictor = predictImdb;
+
+  document.querySelector('t-donut').run();
 };
 
 run();
