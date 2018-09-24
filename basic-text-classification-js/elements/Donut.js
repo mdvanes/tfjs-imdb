@@ -40,7 +40,7 @@ class Donut extends LitElement {
   constructor() {
     super();
     this.radius = 50;
-    this.offset = this.radius * 1.5; // 25 -> 50, 50 -> 75
+    this.offset = 67.5; // TODO 0,5*width of .chart
     this.max = 2 * Math.PI * this.radius;
   }
 
@@ -93,7 +93,7 @@ class Donut extends LitElement {
               display: block;
             }
         </style>
-        <svg width="150" height="150" class="chart">
+        <svg width="135" height="135" class="chart">
             <circle r="${this.radius}" cx="${this.offset}" cy="${this.offset}" class="pie"/>
         </svg>`;
   }
