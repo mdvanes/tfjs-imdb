@@ -71,7 +71,7 @@ class Donut extends LitElement {
       || (percentage < 0.5 && !isPositive);
     pie.style.stroke = isOnTarget ? '#33fa9a' : '#d50000';
     donut.style.strokeDasharray = this._getSdaByPercentage(percentage);
-    donut.style.stroke = '#2196f3'; // percentage >= 0.5 ? '#33fa9a' : '#c8d500';
+    donut.style.stroke = '#2196f3';
   }
 
   render() {
