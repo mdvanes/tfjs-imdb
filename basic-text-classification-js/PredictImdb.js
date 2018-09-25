@@ -43,7 +43,7 @@ export default class PredictImdb {
    * @param (required) reviewText
    * @param (optional) expectedResult - add this expected result to the output
    * @param (optional) description - add this description of the reviewText to the output
-   * @param (optional) isRaw - boolean to indicate that only the raw prediction, an unrounded float, should be returned.
+   * @param (optional) isRaw - boolean to indicate that an object with the raw prediction, an unrounded float, should be returned.
    * @returns {string} A text containing the prediction, expected value and description
    */
   predict(reviewText, expectedResult, description, isRaw = false) {
@@ -66,7 +66,11 @@ export default class PredictImdb {
     const result = `Prediction${descriptionLabel}${expectedResultLabel} is ${Math.round(predictionValue)} (${predictionValue} before rounding)`;
     prediction.dispose();
 
-    return isRaw ? predictionValue : result;
+    return isRaw
+      ? {
+        predictionValue,
+      }
+      : result;
   }
 
   batchPredict(reviewsObj) {
@@ -74,7 +78,7 @@ export default class PredictImdb {
     return reviewsObj
       .map(({reviewText, expectedResult, description}) => {
         // console.log(reviewText)
-        return this.predict(reviewText, expectedResult, description)
+        return this.predict(reviewText, expectedResult, description);
       });
   }
 }

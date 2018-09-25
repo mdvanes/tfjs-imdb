@@ -9,7 +9,7 @@ class Results extends LitElement {
     return {
       title: {type: String},
       body: {type: String},
-      results: {type: Array}
+      results: {type: Array},
     };
   }
 
