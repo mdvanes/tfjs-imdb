@@ -14627,7 +14627,7 @@ module.exports = {
   "_args": [
     [
       "elliptic@6.4.1",
-      "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js"
+      "/Users/martinvanes/Documents/Projects/ING/tfjs-imdb/basic-text-classification-js"
     ]
   ],
   "_development": true,
@@ -14653,7 +14653,7 @@ module.exports = {
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
   "_spec": "6.4.1",
-  "_where": "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js",
+  "_where": "/Users/martinvanes/Documents/Projects/ING/tfjs-imdb/basic-text-classification-js",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -37590,7 +37590,7 @@ let Donut = class Donut extends _litElement.LitElement {
     const isOnTarget = percentage >= 0.5 && isPositive || percentage < 0.5 && !isPositive;
     pie.style.stroke = isOnTarget ? '#33fa9a' : '#d50000';
     donut.style.strokeDasharray = this._getSdaByPercentage(percentage);
-    donut.style.stroke = '#2196f3'; // percentage >= 0.5 ? '#33fa9a' : '#c8d500';
+    donut.style.stroke = '#2196f3';
   }
 
   render() {
@@ -37721,4 +37721,4 @@ const run = (() => {
 
 run();
 },{"core-js/modules/es7.object.values":"cZE6","core-js/modules/es7.object.entries":"beat","core-js/modules/es7.object.get-own-property-descriptors":"MZQr","core-js/modules/es7.string.pad-start":"fWC9","core-js/modules/es7.string.pad-end":"XG7E","core-js/modules/web.timers":"47+F","core-js/modules/web.immediate":"hg3C","core-js/modules/web.dom.iterable":"hFdU","@tensorflow/tfjs":"cHV2","./exampleReviews":"W5rS","./load-util":"J7fA","./example-util":"2FSJ","./PredictImdb":"RTzk","./elements/Results":"8tD8","./elements/RealTimePredict":"oTOE","./elements/Donut":"Or/u"}]},{},["Focm"], null)
-//# sourceMappingURL=basic-text-classification-js.f774e195.map
+//# sourceMappingURL=basic-text-classification-js.7a5f0b2a.map
