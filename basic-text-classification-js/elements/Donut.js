@@ -67,7 +67,7 @@ class Donut extends LitElement {
     pie.style.strokeDashoffset = isPositive
       ? this.pie.max / 2
       : pie.style.strokeDashoffset;
-    pie.style.stroke = '#2196f3';
+    pie.style.stroke = '#2196f3'; // TODO change color if target != actual
     donut.style.strokeDasharray = this._getSdaByPercentage(percentage);
     donut.style.stroke = percentage >= 0.5 ? 'mediumspringgreen' : '#d50000';
   }
@@ -75,11 +75,11 @@ class Donut extends LitElement {
   render() {
     const perc = this.getAttribute('perc');
     const target = this.getAttribute('target');
-    // TODO without timeout. getAttribute('perc') becomes available in
-    // render(), but the pie elem is not yet added to DOM
+    /* TODO without timeout. getAttribute('perc') becomes available in
+    render(), but the pie elem is not yet added to DOM */
     setTimeout(() => {
       this.run(perc, target === 'positive');
-    });
+    }, 1);
     return html`
        <style>
            .chart {

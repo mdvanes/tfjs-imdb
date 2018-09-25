@@ -32,40 +32,45 @@ class Results extends LitElement {
 
   _renderResultChart({predictionValue, descriptionLabel, expectedResult}) {
     // TODO return either "is-positive" or nothing
-    // const targetAttr = expectedResult >= 0.5 ? html`positive` : html`negative`;
+    // const targetAttr = expectedResult >= 0.5
+    // ? html`positive` : html`negative`;
     const targetAttr = expectedResult >= 0.5 ? 'positive' : 'negative';
-    return html`<t-donut 
-      perc="${predictionValue}" target="${targetAttr}"
-      ></t-donut>
-      <br/>
-      ${descriptionLabel}<br/>
-      ${expectedResult} / ${predictionValue} `;
+    return html`
+      <div 
+        class="mdl-card mdl-shadow--2dp" 
+        style="width: 250px; margin: 0 1em 1em 0;">
+        <div class="mdl-card__title">
+          <h2 
+            class="mdl-card__title-text custom-header"
+          >${descriptionLabel}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <t-donut 
+            perc="${predictionValue}" target="${targetAttr}"
+          ></t-donut>
+          <br/>
+          ${expectedResult} / ${predictionValue}
+        </div>
+      </div>`;
   }
 
   render() {
-    // const list = this.results && this.results.length > 0
-    //   ? html`
-    //     <ul>
-    //         ${this.results.map(({predictionValue, descriptionLabel, expectedResultLabel}) => html`<li>${predictionValue}</li>`)}
-    //     </ul>
-    //   `
-    //   : html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
     const list = this.results && this.results.length > 0
       ? html`${this.results.map((result) => this._renderResultChart(result))}`
-      : html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
+      : html`<div 
+        class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"
+        ></div>`;
 
     return html`
         <style> 
-            .custom-header { color: green; }
+            .custom-header { color: green; width: 100%; }
         </style>
-        <div class="mdl-card mdl-shadow--2dp" style="width: 100%;">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text custom-header">${this.title}</h2>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <p>${this.body}</p>
-            ${list}
-          </div>
+        <div class="mdl-grid" style="max-width: 950px">
+          <h2 class="custom-header">${this.title}</h2>
+          <p>${this.body}</p>
+        </div>
+        <div class="mdl-grid" style="max-width: 950px">
+          ${list}      
         </div>
     `;
   }
