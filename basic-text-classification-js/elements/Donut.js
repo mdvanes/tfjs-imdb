@@ -61,15 +61,17 @@ class Donut extends LitElement {
     return `${this.max * percentage}, ${this.max - (this.max * percentage)}`;
   }
 
-  run(percentage = 0.74, isPositive = true) {
+  run(percentage = 0.5, isPositive = true) {
     const donut = this.querySelector('.donut');
     const pie = this.querySelector('.pie');
     pie.style.strokeDashoffset = isPositive
       ? this.pie.max / 2
       : pie.style.strokeDashoffset;
-    pie.style.stroke = '#2196f3'; // TODO change color if target != actual
+    const isOnTarget = (percentage >= 0.5 && isPositive)
+      || (percentage < 0.5 && !isPositive);
+    pie.style.stroke = isOnTarget ? '#2196f3' : '#d50000';
     donut.style.strokeDasharray = this._getSdaByPercentage(percentage);
-    donut.style.stroke = percentage >= 0.5 ? 'mediumspringgreen' : '#d50000';
+    donut.style.stroke = percentage >= 0.5 ? '#33fa9a' : '#c8d500';
   }
 
   render() {
