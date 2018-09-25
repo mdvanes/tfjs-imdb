@@ -59,7 +59,9 @@ export default class PredictImdb {
 
     const prediction = this.model.predict(input);
 
-    const expectedResultLabel = expectedResult ? ` (target is ${expectedResult})` : '';
+    const expectedResultLabel = expectedResult
+      ? ` (target is ${expectedResult})`
+      : '';
     const descriptionLabel = description ? ` for "${description}"` : '';
     // const result = `Prediction${descriptionLabel}${expectedResultLabel}: ${prediction.dataSync()[0]} (${prediction})`;
     const predictionValue = prediction.dataSync()[0];
@@ -68,6 +70,9 @@ export default class PredictImdb {
 
     return isRaw
       ? {
+        descriptionLabel,
+        expectedResult,
+        expectedResultLabel,
         predictionValue,
       }
       : result;
@@ -78,7 +83,7 @@ export default class PredictImdb {
     return reviewsObj
       .map(({reviewText, expectedResult, description}) => {
         // console.log(reviewText)
-        return this.predict(reviewText, expectedResult, description);
+        return this.predict(reviewText, expectedResult, description, true);
       });
   }
 }

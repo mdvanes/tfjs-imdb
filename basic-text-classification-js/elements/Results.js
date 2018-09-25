@@ -30,13 +30,28 @@ class Results extends LitElement {
     this.results.push(result);
   }
 
+  _renderResultChart({predictionValue, descriptionLabel, expectedResult}) {
+    // TODO return either "is-positive" or nothing
+    // const targetAttr = expectedResult >= 0.5 ? html`positive` : html`negative`;
+    const targetAttr = expectedResult >= 0.5 ? 'positive' : 'negative';
+    return html`<t-donut 
+      perc="${predictionValue}" target="${targetAttr}"
+      ></t-donut>
+      <br/>
+      ${descriptionLabel}<br/>
+      ${expectedResult} / ${predictionValue} `;
+  }
+
   render() {
+    // const list = this.results && this.results.length > 0
+    //   ? html`
+    //     <ul>
+    //         ${this.results.map(({predictionValue, descriptionLabel, expectedResultLabel}) => html`<li>${predictionValue}</li>`)}
+    //     </ul>
+    //   `
+    //   : html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
     const list = this.results && this.results.length > 0
-      ? html`
-        <ul>
-            ${this.results.map(result => html`<li>${result}</li>`)}
-        </ul>
-      `
+      ? html`${this.results.map((result) => this._renderResultChart(result))}`
       : html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
 
     return html`

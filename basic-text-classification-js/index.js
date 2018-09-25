@@ -30,8 +30,6 @@ const run = async () => {
 
   const realTimePredictElem = document.querySelector('real-time-predict');
   realTimePredictElem.predictor = predictImdb;
-
-  document.querySelector('t-donut').run();
 };
 
 run();

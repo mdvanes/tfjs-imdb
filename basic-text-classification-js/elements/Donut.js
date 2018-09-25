@@ -32,6 +32,9 @@ aria-labelledby="title desc" role="img">
 class Donut extends LitElement {
   static get properties() {
     return {
+      perc: {type: Number},
+      target: {type: String},
+      isPositive: {type: Boolean},
       radius: {type: Number},
       max: {type: Number},
     };
@@ -70,6 +73,13 @@ class Donut extends LitElement {
   }
 
   render() {
+    const perc = this.getAttribute('perc');
+    const target = this.getAttribute('target');
+    // TODO without timeout. getAttribute('perc') becomes available in
+    // render(), but the pie elem is not yet added to DOM
+    setTimeout(() => {
+      this.run(perc, target === 'positive');
+    });
     return html`
        <style>
            .chart {
