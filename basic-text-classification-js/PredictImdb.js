@@ -1,4 +1,4 @@
-import * as tf from "@tensorflow/tfjs/dist/index";
+import {buffer} from '@tensorflow/tfjs/dist/index';
 
 export default class PredictImdb {
   constructor(model, metadata) {
@@ -17,18 +17,18 @@ export default class PredictImdb {
     //   const mapped =
     // }
     let result = reviewText
-      .split(' ')
-      .map(word => {
-        const codedWord = this.wordIndex[word];
-        // Unknown words should get index "2"
-        return codedWord ? codedWord + this.indexFrom : 2;
-      });
+        .split(' ')
+        .map((word) => {
+          const codedWord = this.wordIndex[word];
+          // Unknown words should get index "2"
+          return codedWord ? codedWord + this.indexFrom : 2;
+        });
     // Prepend with "1" for start
     result = [1, ...result]; // same as result.unshift(1)
 
     // Pad with "0" until length is 256
     const emptyLength = 256 - result.length;
-    const padding = emptyLength > 0 ? new Array(256 - result.length) : new Array();
+    const padding = emptyLength > 0 ? new Array(256 - result.length) : [];
     padding.fill(0);
 
     result = [...result, ...padding];
@@ -42,15 +42,19 @@ export default class PredictImdb {
    * Run a prediction for reviewText
    * @param (required) reviewText
    * @param (optional) expectedResult - add this expected result to the output
-   * @param (optional) description - add this description of the reviewText to the output
-   * @param (optional) isRaw - boolean to indicate that an object with the raw prediction, an unrounded float, should be returned.
-   * @returns {string} A text containing the prediction, expected value and description
+   * @param (optional) description - add this description of the reviewText
+   * to the output
+   * @param (optional) isRaw - boolean to indicate that an object with the
+   * raw prediction, an unrounded float, should be returned.
+   * @returns {string} A text containing the prediction, expected value and
+   * description
    */
   predict(reviewText, expectedResult, description, isRaw = false) {
-    // Encode the text with metadata.word_index and see if the result is equal to `example`
+    // Encode the text with metadata.word_index and see if the result is
+    // equal to `example`
     const encodedReview = this.encodeReview(reviewText);
 
-    const inputBuffer = tf.buffer([1, this.maxLen], 'float32');
+    const inputBuffer = buffer([1, this.maxLen], 'float32');
     for (let i = 0; i < encodedReview.length; ++i) {
       const word = encodedReview[i];
       inputBuffer.set(word, 0, i);
@@ -63,9 +67,11 @@ export default class PredictImdb {
       ? ` (target is ${expectedResult})`
       : '';
     const descriptionLabel = description ? ` for "${description}"` : '';
-    // const result = `Prediction${descriptionLabel}${expectedResultLabel}: ${prediction.dataSync()[0]} (${prediction})`;
+    // const result = `Prediction${descriptionLabel}${expectedResultLabel}:
+    // ${prediction.dataSync()[0]} (${prediction})`;
     const predictionValue = prediction.dataSync()[0];
-    const result = `Prediction${descriptionLabel}${expectedResultLabel} is ${Math.round(predictionValue)} (${predictionValue} before rounding)`;
+    const result = `Prediction${descriptionLabel}${expectedResultLabel} 
+      is ${Math.round(predictionValue)} (${predictionValue} before rounding)`;
     prediction.dispose();
 
     return isRaw
@@ -80,11 +86,8 @@ export default class PredictImdb {
   }
 
   batchPredict(reviewsObj) {
-    // return reviewsObj.map(review => this.predict(...review));
     return reviewsObj
-      .map(({reviewText, expectedResult, description}) => {
-        // console.log(reviewText)
-        return this.predict(reviewText, expectedResult, description, true);
-      });
+        .map(({reviewText, expectedResult, description}) =>
+          this.predict(reviewText, expectedResult, description, true));
   }
 }
