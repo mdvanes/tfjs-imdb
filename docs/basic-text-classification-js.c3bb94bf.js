@@ -14627,7 +14627,7 @@ module.exports = {
   "_args": [
     [
       "elliptic@6.4.1",
-      "/home/martin/ZNoBackup/tfjs-imdb/basic-text-classification-js"
+      "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js"
     ]
   ],
   "_development": true,
@@ -14653,7 +14653,7 @@ module.exports = {
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
   "_spec": "6.4.1",
-  "_where": "/home/martin/ZNoBackup/tfjs-imdb/basic-text-classification-js",
+  "_where": "/home/xh64pd/Projects/ING/tfjs-imdb/basic-text-classification-js",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -35127,7 +35127,7 @@ let PredictImdb = class PredictImdb {
    * @param (required) reviewText
    * @param (optional) expectedResult - add this expected result to the output
    * @param (optional) description - add this description of the reviewText to the output
-   * @param (optional) isRaw - boolean to indicate that only the raw prediction, an unrounded float, should be returned.
+   * @param (optional) isRaw - boolean to indicate that an object with the raw prediction, an unrounded float, should be returned.
    * @returns {string} A text containing the prediction, expected value and description
    */
   predict(reviewText, expectedResult, description, isRaw = false) {
@@ -35150,19 +35150,25 @@ let PredictImdb = class PredictImdb {
     const result = `Prediction${descriptionLabel}${expectedResultLabel} is ${Math.round(predictionValue)} (${predictionValue} before rounding)`;
     prediction.dispose();
 
-    return isRaw ? predictionValue : result;
+    return isRaw ? {
+      descriptionLabel,
+      description,
+      expectedResult,
+      expectedResultLabel,
+      predictionValue
+    } : result;
   }
 
   batchPredict(reviewsObj) {
     // return reviewsObj.map(review => this.predict(...review));
     return reviewsObj.map(({ reviewText, expectedResult, description }) => {
       // console.log(reviewText)
-      return this.predict(reviewText, expectedResult, description);
+      return this.predict(reviewText, expectedResult, description, true);
     });
   }
 };
 exports.default = PredictImdb;
-},{"@tensorflow/tfjs/dist/index":"fHyk"}],"kXJ6":[function(require,module,exports) {
+},{"@tensorflow/tfjs/dist/index":"fHyk"}],"IX47":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35364,7 +35370,7 @@ const createMarker = exports.createMarker = () => document.createComment('');
  */
 const lastAttributeNameRegex = exports.lastAttributeNameRegex = /([ \x09\x0a\x0c\x0d])([^\0-\x1F\x7F-\x9F \x09\x0a\x0c\x0d"'>=/]+)([ \x09\x0a\x0c\x0d]*=[ \x09\x0a\x0c\x0d]*(?:[^ \x09\x0a\x0c\x0d"'`<>=]*|"[^"]*|'[^']*))$/;
 //# sourceMappingURL=template.js.map
-},{}],"TOsx":[function(require,module,exports) {
+},{}],"uuhF":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35499,7 +35505,7 @@ function insertNodeIntoTemplate(template, node, refNode = null) {
     }
 }
 //# sourceMappingURL=modify-template.js.map
-},{"./template.js":"kXJ6"}],"JQ4u":[function(require,module,exports) {
+},{"./template.js":"IX47"}],"BAQD":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35546,7 +35552,7 @@ const removeNodes = exports.removeNodes = (container, startNode, endNode = null)
     }
 };
 //# sourceMappingURL=dom.js.map
-},{}],"P1HH":[function(require,module,exports) {
+},{}],"ZHdK":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35572,7 +35578,7 @@ const directive = exports.directive = f => {
 };
 const isDirective = exports.isDirective = o => typeof o === 'function' && directives.has(o);
 //# sourceMappingURL=directive.js.map
-},{}],"m4zr":[function(require,module,exports) {
+},{}],"0nHM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35584,7 +35590,7 @@ Object.defineProperty(exports, "__esModule", {
  */
 const noChange = exports.noChange = {};
 //# sourceMappingURL=part.js.map
-},{}],"nn5n":[function(require,module,exports) {
+},{}],"trld":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35688,7 +35694,7 @@ class TemplateInstance {
     }
 }
 exports.TemplateInstance = TemplateInstance; //# sourceMappingURL=template-instance.js.map
-},{"./dom.js":"JQ4u","./template.js":"kXJ6"}],"SM33":[function(require,module,exports) {
+},{"./dom.js":"BAQD","./template.js":"IX47"}],"dzAj":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35781,7 +35787,7 @@ class SVGTemplateResult extends TemplateResult {
     }
 }
 exports.SVGTemplateResult = SVGTemplateResult; //# sourceMappingURL=template-result.js.map
-},{"./dom.js":"JQ4u","./template.js":"kXJ6"}],"PIiJ":[function(require,module,exports) {
+},{"./dom.js":"BAQD","./template.js":"IX47"}],"msph":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36178,7 +36184,7 @@ class EventPart {
     }
 }
 exports.EventPart = EventPart; //# sourceMappingURL=parts.js.map
-},{"./directive.js":"P1HH","./dom.js":"JQ4u","./part.js":"m4zr","./template-instance.js":"nn5n","./template-result.js":"SM33","./template.js":"kXJ6"}],"K8aL":[function(require,module,exports) {
+},{"./directive.js":"ZHdK","./dom.js":"BAQD","./part.js":"0nHM","./template-instance.js":"trld","./template-result.js":"dzAj","./template.js":"IX47"}],"VkYL":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36224,7 +36230,7 @@ function templateFactory(result) {
  */
 const templateCaches = exports.templateCaches = new Map();
 //# sourceMappingURL=template-factory.js.map
-},{"./template.js":"kXJ6"}],"dvwX":[function(require,module,exports) {
+},{"./template.js":"IX47"}],"NWXj":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36278,7 +36284,7 @@ function render(result, container, templateFactory = _templateFactory.templateFa
   part.commit();
 }
 //# sourceMappingURL=render.js.map
-},{"./dom.js":"JQ4u","./parts.js":"PIiJ","./template-factory.js":"K8aL"}],"mAZn":[function(require,module,exports) {
+},{"./dom.js":"BAQD","./parts.js":"msph","./template-factory.js":"VkYL"}],"elJF":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36340,7 +36346,7 @@ exports.DefaultTemplateProcessor = DefaultTemplateProcessor; /**
 
 const defaultTemplateProcessor = exports.defaultTemplateProcessor = new DefaultTemplateProcessor();
 //# sourceMappingURL=default-template-processor.js.map
-},{"./parts.js":"PIiJ"}],"KMqM":[function(require,module,exports) {
+},{"./parts.js":"msph"}],"N9X9":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36492,7 +36498,7 @@ const html = exports.html = (strings, ...values) => new _templateResult.Template
  */
 const svg = exports.svg = (strings, ...values) => new _templateResult.SVGTemplateResult(strings, values, 'svg', _defaultTemplateProcessor.defaultTemplateProcessor);
 //# sourceMappingURL=lit-html.js.map
-},{"./lib/default-template-processor.js":"mAZn","./lib/template-result.js":"SM33","./lib/template.js":"kXJ6","./lib/template-instance.js":"nn5n","./lib/part.js":"m4zr","./lib/parts.js":"PIiJ","./lib/dom.js":"JQ4u","./lib/directive.js":"P1HH","./lib/render.js":"dvwX","./lib/template-factory.js":"K8aL"}],"4cx+":[function(require,module,exports) {
+},{"./lib/default-template-processor.js":"elJF","./lib/template-result.js":"dzAj","./lib/template.js":"IX47","./lib/template-instance.js":"trld","./lib/part.js":"0nHM","./lib/parts.js":"msph","./lib/dom.js":"BAQD","./lib/directive.js":"ZHdK","./lib/render.js":"NWXj","./lib/template-factory.js":"VkYL"}],"v107":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36662,7 +36668,7 @@ function render(result, container, scopeName) {
     }
 }
 //# sourceMappingURL=shady-render.js.map
-},{"./modify-template.js":"TOsx","./render.js":"dvwX","./template-factory.js":"K8aL","./template-result.js":"SM33","./template.js":"kXJ6","../lit-html.js":"KMqM"}],"Di0A":[function(require,module,exports) {
+},{"./modify-template.js":"uuhF","./render.js":"NWXj","./template-factory.js":"VkYL","./template-result.js":"dzAj","./template.js":"IX47","../lit-html.js":"N9X9"}],"Di0A":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37279,7 +37285,7 @@ exports.LitElement = LitElement; /**
 
 LitElement.render = _shadyRender.render;
 //# sourceMappingURL=lit-element.js.map
-},{"lit-html/lib/shady-render":"4cx+","./lib/updating-element.js":"Di0A","./lib/decorators.js":"DDXd","lit-html/lit-html":"KMqM"}],"8tD8":[function(require,module,exports) {
+},{"lit-html/lib/shady-render":"v107","./lib/updating-element.js":"Di0A","./lib/decorators.js":"DDXd","lit-html/lit-html":"N9X9"}],"8tD8":[function(require,module,exports) {
 'use strict';
 
 var _litElement = require('@polymer/lit-element');
@@ -37314,25 +37320,55 @@ let Results = class Results extends _litElement.LitElement {
     this.results.push(result);
   }
 
+  _renderResultChart({ predictionValue, description, expectedResult }) {
+    // TODO return either "is-positive" or nothing
+    // const targetAttr = expectedResult >= 0.5
+    // ? html`positive` : html`negative`;
+    const targetAttr = expectedResult >= 0.5 ? 'positive' : 'negative';
+    return _litElement.html`
+      <div 
+        class="mdl-card custom-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 
+            class="mdl-card__title-text custom-header"
+          >${description}</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <t-donut 
+            perc="${predictionValue}" target="${targetAttr}"
+          ></t-donut>
+          <ul>
+            <li>expected: ${expectedResult}</li>
+            <li>predicted: ${predictionValue.toFixed(3)}</li>
+          </ul>
+        </div>
+      </div>`;
+  }
+
   render() {
-    const list = this.results && this.results.length > 0 ? _litElement.html`
-        <ul>
-            ${this.results.map(result => _litElement.html`<li>${result}</li>`)}
-        </ul>
-      ` : _litElement.html`<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>`;
+    const list = this.results && this.results.length > 0 ? _litElement.html`${this.results.map(result => this._renderResultChart(result))}` : _litElement.html`<div 
+        class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"
+        ></div>`;
 
     return _litElement.html`
         <style> 
-            .custom-header { color: green; }
+            .custom-header { 
+              color: green;
+              display: block;
+              text-align: center;
+              width: 100%;
+            }
+            .custom-card {
+              margin: 0 1em 1em 0;
+              width: 220px;
+            }
         </style>
-        <div class="mdl-card mdl-shadow--2dp" style="width: 100%;">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text custom-header">${this.title}</h2>
-          </div>
-          <div class="mdl-card__supporting-text">
-            <p>${this.body}</p>
-            ${list}
-          </div>
+        <div class="mdl-grid" style="max-width: 950px">
+          <h2 class="custom-header">${this.title}</h2>
+          <p>${this.body}</p>
+        </div>
+        <div class="mdl-grid" style="max-width: 950px">
+          ${list}      
         </div>
     `;
   }
@@ -37417,7 +37453,6 @@ var _litElement = require('@polymer/lit-element');
 require('./ExampleReviewText');
 
 let RealTimePredict = class RealTimePredict extends _litElement.LitElement {
-
   static get properties() {
     return {
       escapedValue: { type: String },
@@ -37444,8 +37479,8 @@ let RealTimePredict = class RealTimePredict extends _litElement.LitElement {
   _handleChange(ev) {
     this.escapedValue = ev.target.value;
     if (this.predictor) {
-      const resultValue = this.predictor.predict(this.escapedValue, 0, '', true);
-      this.result = resultValue >= 0.5 ? `👍 (${resultValue})` : `👎 (${resultValue})`;
+      const resultObj = this.predictor.predict(this.escapedValue, 0, '', true);
+      this.result = resultObj.predictionValue >= 0.5 ? `👍 (${resultObj.predictionValue})` : `👎 (${resultObj.predictionValue})`;
     } else {
       alert('no predictor set');
     }
@@ -37459,20 +37494,25 @@ let RealTimePredict = class RealTimePredict extends _litElement.LitElement {
             <h2 class="mdl-card__title-text">Type review:</h2>
           </div>
           <div class="mdl-card__supporting-text">
-            <textarea style="border: 1px dotted black; width: 100%; height: 200px;" @change="${e => this._handleChange(e)}"></textarea>
+            <textarea 
+              style="border: 1px dotted black; width: 100%; height: 200px;" 
+              @change="${e => this._handleChange(e)}"></textarea>
             escaped value:
-            <div style="border: 1px dashed blue; max-height: 100px; overflow-y: scroll;">${this.escapedValue}</div>
+            <div 
+              style="border: 1px dashed blue; max-height: 100px; overflow-y: scroll;"
+            >${this.escapedValue}</div>
             <br> 
             prediction:
             <br>
             <div>${this.result}</div>
           </div>
         </div>
-        <example-review-text class="mdl-cell mdl-cell--6-col"></example-review-text>
+        <example-review-text 
+          class="mdl-cell mdl-cell--6-col"
+        ></example-review-text>
       </div>
     `;
   }
-
 };
 
 
@@ -37483,37 +37523,40 @@ customElements.define('real-time-predict', RealTimePredict);
 var _litElement = require('@polymer/lit-element');
 
 /*
-<svg class="chart1" width="420" height="150" aria-labelledby="title desc" role="img">
-  <title id="title">A bar chart showing information</title>
+<svg class="chart1" width="420" height="150"
+aria-labelledby="title desc" role="img">
+ <title id="title">A bar chart showing information</title>
 <desc id="desc">4 apples; 8 bananas; 15 kiwis; 16 oranges; 23 lemons</desc>
 <g class="bar">
-  <rect width="40" height="19"></rect>
-  <text x="45" y="9.5" dy=".35em">4 apples</text>
+ <rect width="40" height="19"></rect>
+ <text x="45" y="9.5" dy=".35em">4 apples</text>
 </g>
 <g class="bar">
-  <rect width="80" height="19" y="20"></rect>
-  <text x="85" y="28" dy=".35em">8 bananas</text>
+ <rect width="80" height="19" y="20"></rect>
+ <text x="85" y="28" dy=".35em">8 bananas</text>
 </g>
 <g class="bar">
-  <rect width="150" height="19" y="40"></rect>
-  <text x="150" y="48" dy=".35em">15 kiwis</text>
+ <rect width="150" height="19" y="40"></rect>
+ <text x="150" y="48" dy=".35em">15 kiwis</text>
 </g>
 <g class="bar">
-  <rect width="160" height="19" y="60"></rect>
-  <text x="161" y="68" dy=".35em">16 oranges</text>
+ <rect width="160" height="19" y="60"></rect>
+ <text x="161" y="68" dy=".35em">16 oranges</text>
 </g>
 <g class="bar">
-  <rect width="230" height="19" y="80"></rect>
-  <text x="235" y="88" dy=".35em">23 lemons</text>
+ <rect width="230" height="19" y="80"></rect>
+ <text x="235" y="88" dy=".35em">23 lemons</text>
 </g>
 </svg>
- */
+*/
 
 // Based on https://css-tricks.com/how-to-make-charts-with-svg/
 let Donut = class Donut extends _litElement.LitElement {
-
   static get properties() {
     return {
+      perc: { type: Number },
+      target: { type: String },
+      isPositive: { type: Boolean },
       radius: { type: Number },
       max: { type: Number }
     };
@@ -37524,6 +37567,11 @@ let Donut = class Donut extends _litElement.LitElement {
     this.radius = 50;
     this.offset = 67.5; // TODO 0,5*width of .chart
     this.max = 2 * Math.PI * this.radius;
+
+    this.pie = {
+      radius: this.radius / 2,
+      max: this.max / 2
+    };
   }
 
   // Do not create shadow root
@@ -37535,51 +37583,63 @@ let Donut = class Donut extends _litElement.LitElement {
     return `${this.max * percentage}, ${this.max - this.max * percentage}`;
   }
 
-  run() {
-    const pie = document.querySelector('.pie');
-    setTimeout(() => {
-      // 158 316
-      // 100% is 2*PI*r
-      // 100% is 156 when r=25, 25% is 39, 75% is 117
-      // 100% is 321 when r=50?
-      const percentage = 25;
-      pie.style.strokeDasharray = this._getSdaByPercentage(0.25);
-    }, 1000);
-    setTimeout(() => {
-      // 100% is 156, 25% is 39, 75% is 117
-      pie.style.strokeDasharray = this._getSdaByPercentage(0.75);
-    }, 2000);
-    setTimeout(() => {
-      // 100% is 156, 25% is 39, 75% is 117
-      pie.style.strokeDasharray = this.max;
-      pie.style.stroke = 'mediumspringgreen';
-    }, 3000);
+  run(percentage = 0.5, isPositive = true) {
+    const donut = this.querySelector('.donut');
+    const pie = this.querySelector('.pie');
+    pie.style.strokeDashoffset = isPositive ? this.pie.max / 2 : pie.style.strokeDashoffset;
+    const isOnTarget = percentage >= 0.5 && isPositive || percentage < 0.5 && !isPositive;
+    pie.style.stroke = isOnTarget ? '#33fa9a' : '#d50000';
+    donut.style.strokeDasharray = this._getSdaByPercentage(percentage);
+    donut.style.stroke = '#2196f3'; // percentage >= 0.5 ? '#33fa9a' : '#c8d500';
   }
 
   render() {
+    const perc = this.getAttribute('perc');
+    const target = this.getAttribute('target');
+    /* TODO without timeout. getAttribute('perc') becomes available in
+    render(), but the pie elem is not yet added to DOM */
+    setTimeout(() => {
+      this.run(perc, target === 'positive');
+    }, 1);
     return _litElement.html`
-        <style>
-            circle {
-              fill: #f5f5f5;
-              stroke: #d50000;
-              stroke-width: 25%;
-              stroke-dasharray: 0, ${this.max};
-              transition: stroke-dasharray .3s ease, stroke 1s ease;
-            }
+       <style>
+           .chart {
+             margin: 0 auto;
+             transform: rotate(-90deg);
+             background: #424242;
+             border-radius: 50%;
+             display: block;
+           }
+           
+           .donut {
+             fill: #f5f5f5;
+             stroke: #2196f3;
+             stroke-width: 25%;
+             stroke-dasharray: 0, ${this.max};
+             transition: stroke-dasharray .3s ease, stroke 1s ease;
+           }
 
-            .chart {
-              margin: 0 auto;
-              transform: rotate(-90deg);
-              background: #424242;
-              border-radius: 50%;
-              display: block;
-            }
-        </style>
-        <svg width="135" height="135" class="chart">
-            <circle r="${this.radius}" cx="${this.offset}" cy="${this.offset}" class="pie"/>
-        </svg>`;
+           .donut-hole {
+             fill: #f5f5f5;
+           }
+           
+           .pie {
+             fill: #f5f5f5;
+             stroke-width: 50;
+             stroke-dasharray: 
+              ${this.pie.max / 2}, ${this.pie.max / 2};
+           }
+       </style>
+       <svg width="135" height="135" class="chart">
+           <circle r="${this.radius}" cx="${this.offset}" cy="${this.offset}"
+              class="donut"/>
+           <circle r="${this.radius}" cx="${this.offset}" cy="${this.offset}"
+              class="donut-hole"/>
+           <circle r="${this.radius / 2}" cx="${this.offset}" 
+              cy="${this.offset}"
+              class="pie"/>
+       </svg>`;
   }
-
 };
 
 
@@ -37652,8 +37712,6 @@ const run = (() => {
 
     const realTimePredictElem = document.querySelector('real-time-predict');
     realTimePredictElem.predictor = predictImdb;
-
-    document.querySelector('t-donut').run();
   });
 
   return function run() {
@@ -37663,4 +37721,4 @@ const run = (() => {
 
 run();
 },{"core-js/modules/es7.object.values":"cZE6","core-js/modules/es7.object.entries":"beat","core-js/modules/es7.object.get-own-property-descriptors":"MZQr","core-js/modules/es7.string.pad-start":"fWC9","core-js/modules/es7.string.pad-end":"XG7E","core-js/modules/web.timers":"47+F","core-js/modules/web.immediate":"hg3C","core-js/modules/web.dom.iterable":"hFdU","@tensorflow/tfjs":"cHV2","./exampleReviews":"W5rS","./load-util":"J7fA","./example-util":"2FSJ","./PredictImdb":"RTzk","./elements/Results":"8tD8","./elements/RealTimePredict":"oTOE","./elements/Donut":"Or/u"}]},{},["Focm"], null)
-//# sourceMappingURL=basic-text-classification-js.ac085fc6.map
+//# sourceMappingURL=basic-text-classification-js.f774e195.map

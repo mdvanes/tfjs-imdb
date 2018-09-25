@@ -30,26 +30,27 @@ class Results extends LitElement {
     this.results.push(result);
   }
 
-  _renderResultChart({predictionValue, descriptionLabel, expectedResult}) {
+  _renderResultChart({predictionValue, description, expectedResult}) {
     // TODO return either "is-positive" or nothing
     // const targetAttr = expectedResult >= 0.5
     // ? html`positive` : html`negative`;
     const targetAttr = expectedResult >= 0.5 ? 'positive' : 'negative';
     return html`
       <div 
-        class="mdl-card mdl-shadow--2dp" 
-        style="width: 250px; margin: 0 1em 1em 0;">
+        class="mdl-card custom-card mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 
             class="mdl-card__title-text custom-header"
-          >${descriptionLabel}</h2>
+          >${description}</h2>
         </div>
         <div class="mdl-card__supporting-text">
           <t-donut 
             perc="${predictionValue}" target="${targetAttr}"
           ></t-donut>
-          <br/>
-          ${expectedResult} / ${predictionValue}
+          <ul>
+            <li>expected: ${expectedResult}</li>
+            <li>predicted: ${predictionValue.toFixed(3)}</li>
+          </ul>
         </div>
       </div>`;
   }
@@ -63,7 +64,16 @@ class Results extends LitElement {
 
     return html`
         <style> 
-            .custom-header { color: green; width: 100%; }
+            .custom-header { 
+              color: green;
+              display: block;
+              text-align: center;
+              width: 100%;
+            }
+            .custom-card {
+              margin: 0 1em 1em 0;
+              width: 220px;
+            }
         </style>
         <div class="mdl-grid" style="max-width: 950px">
           <h2 class="custom-header">${this.title}</h2>

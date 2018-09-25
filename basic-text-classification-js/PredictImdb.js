@@ -71,6 +71,7 @@ export default class PredictImdb {
     return isRaw
       ? {
         descriptionLabel,
+        description,
         expectedResult,
         expectedResultLabel,
         predictionValue,
